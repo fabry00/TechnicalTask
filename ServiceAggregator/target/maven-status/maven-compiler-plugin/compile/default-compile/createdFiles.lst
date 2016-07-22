@@ -1,0 +1,4 @@
+com\mycompany\aggregator\ServiceAggregatorApplication.class
+com\mycompany\aggregator\ServiceAggregatorConfiguration.class
+com\mycompany\aggregator\MyCollector.class
+com\mycompany\aggregator\health\HealthCheckTask.class

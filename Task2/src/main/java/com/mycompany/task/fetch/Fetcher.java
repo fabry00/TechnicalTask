@@ -34,13 +34,14 @@ public class Fetcher implements Runnable {
             System.out.println("Fetch");
             try {
                 Metric[] metrics = this.api.getMetrics();
-                
-                for(Metric metric : metrics) {
-                    if(metric == null  ){
-                        System.out.println("null metrix received");
+                if (metrics == null) {
+                    return;
+                }
+                for (Metric metric : metrics) {
+                    if (metric == null) {
                         continue;
                     }
-                 System.out.println(metric.getName()+" "+metric.getValue());
+                    System.out.println("received metric " + metric.getName() + " " + metric.getValue());
                 }
             } catch (SystemUnreachable ex) {
                 Logger.getLogger(Fetcher.class.getName()).log(Level.SEVERE, null, ex);

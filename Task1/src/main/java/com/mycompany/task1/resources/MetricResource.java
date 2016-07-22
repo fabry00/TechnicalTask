@@ -42,18 +42,24 @@ public class MetricResource implements IMetricListener {
     // /taks-list?contains=string
     @Path("/" + Task1API.TASK_LIST)
     public Metric[] listTasks() {
-        log.info("Fetch received");
-        Metric[] metrics = new Metric[lastMetrics.values().size()];
-        int counter = 0;
-        for (Entry<String, Metric> entr : lastMetrics.entrySet()) {
-            System.out.println("Fetched received: "+entr.getValue().getName());
-            metrics[counter] = entr.getValue();
+        synchronized (lastMetrics) {
+            log.info("Fetch received");
+
+            Metric[] metrics = new Metric[lastMetrics.values().size()];
+            int counter = 0;
+            for (Entry<String, Metric> entr : lastMetrics.entrySet()) {
+                System.out.println("Fetched received: " + entr.getValue().getName());
+                metrics[counter] = entr.getValue();
+            }
+
+            return metrics;
         }
-        return metrics;
     }
 
     @Override
     public void newMetric(Metric metric) {
-        lastMetrics.put(metric.getName(), metric);
+        synchronized (lastMetrics) {
+            lastMetrics.put(metric.getName(), metric);
+        }
     }
 }

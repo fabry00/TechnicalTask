@@ -41,10 +41,13 @@ public class Task1API extends BaseServiceAPI {
             Metric[] myObject = mapper.readValue(response.getEntity().getContent(),
                     Metric[].class);
 
-            for(Metric metric : myObject) {
-                System.out.println("-----> "+metric.getValue());
+            for (Metric metric : myObject) {
+                if (metric == null) {
+                    continue;
+                }
+                System.out.println("-----> " + metric.getValue());
             }
-            
+
             return myObject;
         } catch (IOException ex) {
             log.error(ex.getMessage());
