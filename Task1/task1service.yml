@@ -1,0 +1,44 @@
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  # loggers:
+  
+    # Sets the level for 'com.example.app' to DEBUG.
+    # com.example.app: DEBUG
+
+    # Redirects SQL logs to a separate file
+    # org.hibernate.SQL:
+    #   level: DEBUG
+    
+server:
+#  softNofileLimit: 1000
+#  hardNofileLimit: 1000
+  applicationConnectors:
+    - type: http
+      port: 9082
+    #- type: https
+    #  port: 8443
+    #  keyStorePath: example.keystore
+    #  keyStorePassword: example
+    #  validateCerts: false
+    #  validatePeers: false
+    #this requires the alpn-boot library on the JVM's boot classpath
+    #- type: h2
+    #  port: 8445
+    #  keyStorePath: example.keystore
+    #  keyStorePassword: example
+    #  validateCerts: false
+    #  validatePeers: false
+  adminConnectors:
+    - type: http
+      port: 10082
+    #- type: https
+    #  port: 8444
+    #  keyStorePath: example.keystore
+    #  keyStorePassword: example
+    #  validateCerts: false
+    #  validatePeers: false
