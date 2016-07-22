@@ -11,10 +11,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import com.mycompany.task1.api.IMetric;
+import com.mycompany.task1.metric.Metric;
 import com.mycompany.task1.metric.interfaces.IMetricListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Created by bartoszjedrzejewski on 03/01/2016.
@@ -25,7 +26,7 @@ public class MetricResource implements IMetricListener {
 
     private final int maxLength;
     private final AtomicLong counter;
-    private Map<String, IMetric> lastMetrics = new HashMap<>();
+    private Map<String, Metric> lastMetrics = new HashMap<>();
 
     //SLF4J is provided with dropwizard
     Logger log = LoggerFactory.getLogger(MetricResource.class);
@@ -40,13 +41,19 @@ public class MetricResource implements IMetricListener {
     // /taks-list
     // /taks-list?contains=string
     @Path("/" + Task1API.TASK_LIST)
-    public List<IMetric> listTasks() {
+    public Metric[] listTasks() {
         log.info("Fetch received");
-        return (List<IMetric>)lastMetrics.values();
+        Metric[] metrics = new Metric[lastMetrics.values().size()];
+        int counter = 0;
+        for (Entry<String, Metric> entr : lastMetrics.entrySet()) {
+            System.out.println("Fetched received: "+entr.getValue().getName());
+            metrics[counter] = entr.getValue();
+        }
+        return metrics;
     }
 
     @Override
-    public void newMetric(IMetric metric) {
+    public void newMetric(Metric metric) {
         lastMetrics.put(metric.getName(), metric);
     }
 }

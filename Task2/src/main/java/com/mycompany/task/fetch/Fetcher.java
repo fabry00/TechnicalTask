@@ -1,8 +1,8 @@
 package com.mycompany.task.fetch;
 
 import com.mycompany.commons.api.SystemUnreachable;
-import com.mycompany.task1.api.IMetric;
 import com.mycompany.task1.api.Task1API;
+import com.mycompany.task1.metric.Metric;
 import com.mycompany.task1.metric.RamCollector;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -22,7 +22,7 @@ public class Fetcher implements Runnable {
 
     public Fetcher(int seconds) throws URISyntaxException {
 
-        URI uri = new URI("http://195.176.181.126:9082");
+        URI uri = new URI("http://localhost:9082");
         this.api = new Task1API(uri);
         this.seconds = seconds;
     }
@@ -33,8 +33,13 @@ public class Fetcher implements Runnable {
         while (!stop) {
             System.out.println("Fetch");
             try {
-                List<IMetric> metrics = this.api.getMetrics();
-                for(IMetric metric : metrics) {
+                Metric[] metrics = this.api.getMetrics();
+                
+                for(Metric metric : metrics) {
+                    if(metric == null  ){
+                        System.out.println("null metrix received");
+                        continue;
+                    }
                  System.out.println(metric.getName()+" "+metric.getValue());
                 }
             } catch (SystemUnreachable ex) {

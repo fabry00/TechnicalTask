@@ -1,3 +1,4 @@
+
 # Logging settings.
 logging:
 
@@ -19,7 +20,7 @@ server:
 #  hardNofileLimit: 1000
   applicationConnectors:
     - type: http
-      port: 9090
+      port: 9084
     #- type: https
     #  port: 8443
     #  keyStorePath: example.keystore
@@ -35,7 +36,7 @@ server:
     #  validatePeers: false
   adminConnectors:
     - type: http
-      port: 90084
+      port: 10084
     #- type: https
     #  port: 8444
     #  keyStorePath: example.keystore

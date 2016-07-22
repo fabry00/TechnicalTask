@@ -1,7 +1,6 @@
 package com.mycompany.task1.metric;
 
 import com.mycompany.task1.metric.interfaces.BaseCollector;
-import com.mycompany.task1.api.IMetric;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +24,7 @@ public class DiskCollector extends BaseCollector {
     public void run() {
 
         while (!stop) {
-            IMetric metric = new Metric(NAME, "36");
+            Metric metric = new Metric(NAME, "36");
             System.out.println(metric.getName() + " " + metric.getValue());
             fire(metric);
 

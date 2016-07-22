@@ -23,7 +23,7 @@ public class ProcessServiceApplication2 extends Application<ProcessServiceConfig
         int seconds = new CommandLine(args).getInputSeconds();
 
         String[] argsForService
-                = Arrays.copyOfRange(args, 0, 1);
+                = Arrays.copyOfRange(args, 0, 2);
         new ProcessServiceApplication2(seconds).run(argsForService);
     }
 

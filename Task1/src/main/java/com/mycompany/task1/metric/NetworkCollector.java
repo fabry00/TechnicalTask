@@ -1,7 +1,6 @@
 package com.mycompany.task1.metric;
 
 import com.mycompany.task1.metric.interfaces.BaseCollector;
-import com.mycompany.task1.api.IMetric;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,8 +27,8 @@ public class NetworkCollector extends BaseCollector {
     public void run() {
 
         while (!stop) {
-            List<IMetric> metrics = getNetworkMetrics();
-            for (IMetric metric : metrics) {
+            List<Metric> metrics = getNetworkMetrics();
+            for (Metric metric : metrics) {
                 System.out.println(metric.getName() + " " + metric.getValue());
                 fire(metric);
             }
@@ -42,10 +41,10 @@ public class NetworkCollector extends BaseCollector {
 
     }
 
-    private List<IMetric> getNetworkMetrics() {
+    private List<Metric> getNetworkMetrics() {
 
         int interfaces = 2;
-        List<IMetric> metrics = new ArrayList<>();
+        List<Metric> metrics = new ArrayList<>();
         for (int i = 0; i < interfaces; i++) {
             metrics.add(new Metric(NAME + "_" + i, "123 " + i));
 

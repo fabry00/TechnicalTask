@@ -1,6 +1,6 @@
 package com.mycompany.task1.metric.interfaces;
 
-import com.mycompany.task1.api.IMetric;
+import com.mycompany.task1.metric.Metric;
 
 /**
  *
@@ -8,6 +8,6 @@ import com.mycompany.task1.api.IMetric;
  */
 public interface IMetricListener {
     
-    public void newMetric(IMetric metric);
+    public void newMetric(Metric metric);
     
 }

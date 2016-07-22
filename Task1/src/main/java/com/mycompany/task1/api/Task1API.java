@@ -5,6 +5,7 @@ import com.google.common.base.Optional;
 import com.mycompany.commons.api.BaseServiceAPI;
 import com.mycompany.commons.api.SystemUnreachable;
 import com.mycompany.commons.headers.Header;
+import com.mycompany.task1.metric.Metric;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -28,7 +29,7 @@ public class Task1API extends BaseServiceAPI {
         super(uri);
     }
 
-    public List<IMetric> getMetrics() throws SystemUnreachable {
+    public Metric[] getMetrics() throws SystemUnreachable {
         try {
             URIBuilder builder = new URIBuilder(getUri() + TASK + TASK_LIST);
 
@@ -37,9 +38,13 @@ public class Task1API extends BaseServiceAPI {
 
             HttpResponse response = getClient().execute(request);
             ObjectMapper mapper = new ObjectMapper();
-            List<IMetric> myObject = mapper.readValue(response.getEntity().getContent(),
-                    List.class);
+            Metric[] myObject = mapper.readValue(response.getEntity().getContent(),
+                    Metric[].class);
 
+            for(Metric metric : myObject) {
+                System.out.println("-----> "+metric.getValue());
+            }
+            
             return myObject;
         } catch (IOException ex) {
             log.error(ex.getMessage());

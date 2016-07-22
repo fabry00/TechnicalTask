@@ -1,6 +1,7 @@
 package com.mycompany.task1.metric.interfaces;
 
-import com.mycompany.task1.api.IMetric;
+
+import com.mycompany.task1.metric.Metric;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ public abstract class BaseCollector implements IMetricCollector {
         listeners.add(listener);
     }
     
-    protected void fire(IMetric metric) {
+    protected void fire(Metric metric) {
         listeners.stream().forEach((listener) -> {
             listener.newMetric(metric);
         });

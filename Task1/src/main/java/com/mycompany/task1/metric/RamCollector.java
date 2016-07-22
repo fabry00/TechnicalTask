@@ -1,7 +1,6 @@
 package com.mycompany.task1.metric;
 
 import com.mycompany.task1.metric.interfaces.BaseCollector;
-import com.mycompany.task1.api.IMetric;
 import com.mycompany.task1.resources.MetricResource;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +25,7 @@ public class RamCollector extends BaseCollector {
     public void run() {
 
         while (!stop) {
-            IMetric metric = new Metric(NAME, "17");
+            Metric metric = new Metric(NAME, "17");
             System.out.println(metric.getName() + " " + metric.getValue());
             fire(metric);
 

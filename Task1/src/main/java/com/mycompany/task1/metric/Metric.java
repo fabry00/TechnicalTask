@@ -1,27 +1,39 @@
 package com.mycompany.task1.metric;
 
-import com.mycompany.task1.api.IMetric;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  *
  * @author Fabrizio Faustinoni
  */
-public class Metric implements IMetric {
+public class Metric {
 
-    private final String name;
-    private final String value;
+    private String name;
+    private String value;
+
+    public Metric() {
+
+    }
 
     public Metric(String name, String value) {
         this.name = name;
         this.value = value;
     }
 
-    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @JsonProperty
     public String getName() {
         return this.name;
     }
 
-    @Override
+    @JsonProperty
     public String getValue() {
         return this.value;
     }
