@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./MissingArgumentException.html" title="com.mycompany.task1.commandline.MissingArgumentException" alt="" coords="16,19,195,45"/>
+<area shape="rect" id="node1" href="./MissingArgumentException.html" title="&lt;TABLE&gt;" alt="" coords="5,8,205,56"/>
+<area shape="rect" id="node2_1" href="./ICommandLine.html" title="com.mycompany.task1.commandline.ICommandLine" alt="" coords="241,11,346,53"/>
+<area shape="rect" id="node2" href="./ICommandLine.html" title="&lt;TABLE&gt;" alt="" coords="230,5,357,59"/>
+<area shape="rect" id="node3_2" href="./CommandLine.html" title="com.mycompany.task1.commandline.CommandLine" alt="" coords="242,118,345,143"/>
+<area shape="rect" id="node3" href="./CommandLine.html" title="&lt;TABLE&gt;" alt="" coords="231,107,355,155"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./IMetricListener.html" title="com.mycompany.task1.metric.interfaces.IMetricListener" alt="" coords="16,11,120,53"/>
+<area shape="rect" id="node1" href="./IMetricListener.html" title="&lt;TABLE&gt;" alt="" coords="5,5,131,59"/>
+<area shape="rect" id="node2_1" href="./IMetricCollector.html" title="com.mycompany.task1.metric.interfaces.IMetricCollector" alt="" coords="165,11,275,53"/>
+<area shape="rect" id="node2" href="./IMetricCollector.html" title="&lt;TABLE&gt;" alt="" coords="155,5,285,59"/>
+<area shape="rect" id="node3_2" href="./BaseCollector.html" title="com.mycompany.task1.metric.interfaces.BaseCollector" alt="" coords="170,118,270,143"/>
+<area shape="rect" id="node3" href="./BaseCollector.html" title="&lt;TABLE&gt;" alt="" coords="159,107,281,155"/>
+</map>

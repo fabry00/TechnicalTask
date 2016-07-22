@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./IMetricCollector.html" title="com.mycompany.task1.metric.interfaces.IMetricCollector" alt="" coords="16,112,125,155"/>
+<area shape="rect" id="node1" href="./IMetricCollector.html" title="&lt;TABLE&gt;" alt="" coords="5,107,136,160"/>
+<area shape="rect" id="node2_1" href="./BaseCollector.html" title="com.mycompany.task1.metric.interfaces.BaseCollector" alt="" coords="21,219,121,245"/>
+<area shape="rect" id="node2" href="./BaseCollector.html" title="&lt;TABLE&gt;" alt="" coords="10,208,131,256"/>
+<area shape="rect" id="node3_2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Runnable.html" title="java.lang.Runnable" alt="" coords="29,11,112,53"/>
+<area shape="rect" id="node3" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Runnable.html" title="&lt;TABLE&gt;" alt="" coords="19,5,123,59"/>
+</map>

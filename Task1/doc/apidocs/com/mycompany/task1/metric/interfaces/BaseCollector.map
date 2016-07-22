@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../RamCollector.html" title="com.mycompany.task1.metric.RamCollector" alt="" coords="16,214,113,239"/>
+<area shape="rect" id="node1" href="../RamCollector.html" title="&lt;TABLE&gt;" alt="" coords="5,203,124,251"/>
+<area shape="rect" id="node2_1" href="../NetworkCollector.html" title="com.mycompany.task1.metric.NetworkCollector" alt="" coords="159,214,277,239"/>
+<area shape="rect" id="node2" href="../NetworkCollector.html" title="&lt;TABLE&gt;" alt="" coords="149,203,287,251"/>
+<area shape="rect" id="node3_2" href="../DiskCollector.html" title="com.mycompany.task1.metric.DiskCollector" alt="" coords="322,214,418,239"/>
+<area shape="rect" id="node3" href="../DiskCollector.html" title="&lt;TABLE&gt;" alt="" coords="311,203,429,251"/>
+<area shape="rect" id="node4_3" href="../CpuCollector.html" title="com.mycompany.task1.metric.CpuCollector" alt="" coords="463,214,557,239"/>
+<area shape="rect" id="node4" href="../CpuCollector.html" title="&lt;TABLE&gt;" alt="" coords="453,203,567,251"/>
+<area shape="rect" id="node5_4" href="./IMetricCollector.html" title="com.mycompany.task1.metric.interfaces.IMetricCollector" alt="" coords="239,11,349,53"/>
+<area shape="rect" id="node5" href="./IMetricCollector.html" title="&lt;TABLE&gt;" alt="" coords="229,5,359,59"/>
+<area shape="rect" id="node6_5" href="./BaseCollector.html" title="com.mycompany.task1.metric.interfaces.BaseCollector" alt="" coords="244,118,344,143"/>
+<area shape="rect" id="node6" href="./BaseCollector.html" title="&lt;TABLE&gt;" alt="" coords="233,107,355,155"/>
+</map>
