@@ -3,7 +3,7 @@ package com.mycompany.task.resources;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.io.CharStreams;
-import com.mycompany.task.api.ProcessServiceAPI;
+import com.mycompany.task.api.ProcessServiceAPITask2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +24,7 @@ import java.util.logging.Level;
 /**
  * Created by bartoszjedrzejewski on 03/01/2016.
  */
-@Path(ProcessServiceAPI.TASK)
+@Path(ProcessServiceAPITask2.TASK)
 @Produces(MediaType.APPLICATION_JSON)
 public class TaskResource {
 
@@ -42,7 +42,7 @@ public class TaskResource {
     @Timed
     // /taks-list
     // /taks-list?contains=string
-    @Path("/" + ProcessServiceAPI.TASK_LIST)
+    @Path("/" + ProcessServiceAPITask2.TASK_LIST)
     public Task[] listTasks(@QueryParam("contains") Optional<String> contains) {
         List<Task> tasks = new ArrayList<>();
 

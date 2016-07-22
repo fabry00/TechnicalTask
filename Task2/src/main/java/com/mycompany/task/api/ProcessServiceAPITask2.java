@@ -1,4 +1,4 @@
-package com.mycompany.task1.api;
+package com.mycompany.task.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Optional;
@@ -17,13 +17,13 @@ import org.apache.http.client.utils.URIBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ProcessServiceAPI extends BaseServiceAPI {
+public class ProcessServiceAPITask2 extends BaseServiceAPI {
 
-    private final Logger log = LoggerFactory.getLogger(ProcessServiceAPI.class);
+    private final Logger log = LoggerFactory.getLogger(ProcessServiceAPITask2.class);
     public static final String TASK = "/task/";
     public static final String TASK_LIST = "task-list";
 
-    public ProcessServiceAPI(URI uri) {
+    public ProcessServiceAPITask2(URI uri) {
         super(uri);
     }
 

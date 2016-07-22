@@ -55,7 +55,7 @@ read -p "Press any key to continue... " -n1 -s
 echo "-------------------------------------"
 echo "-------------------------------------"
 echo "COMPILING Task2"
-cd ../Task1 
+cd ../Task2 
 mvn install
 if [ $SITE == "y" ]
     then

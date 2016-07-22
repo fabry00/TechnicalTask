@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import org.junit.Rule;
 import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
-import com.mycompany.task.ProcessServiceConfiguration;
+import com.mycompany.task.ProcessServiceConfiguration2;
 
 /**
  *
@@ -24,15 +24,15 @@ public class DefaultResourceTest {
     @Rule
     public ResourceTestRule resource = ResourceTestRule.builder()
             .addResource(new DefaultResource.Builder()
-                    .withName(ProcessServiceConfiguration.SERVICE_NAME)
-                    .withDesc(ProcessServiceConfiguration.SERVICE_DESC)
+                    .withName(ProcessServiceConfiguration2.SERVICE_NAME)
+                    .withDesc(ProcessServiceConfiguration2.SERVICE_DESC)
                     .build()).build();
 
     @Test
     public void testGetGreeting() {
         IServiceInfo expected = new ServiceInfo.Builder().
-                withName(ProcessServiceConfiguration.SERVICE_NAME)
-                .withDesc(ProcessServiceConfiguration.SERVICE_DESC)
+                withName(ProcessServiceConfiguration2.SERVICE_NAME)
+                .withDesc(ProcessServiceConfiguration2.SERVICE_DESC)
                 .build();
         //Obtain client from @Rule.
         Client client = resource.client();

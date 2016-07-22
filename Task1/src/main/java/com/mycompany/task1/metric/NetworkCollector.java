@@ -47,7 +47,7 @@ public class NetworkCollector extends BaseCollector {
         int interfaces = 2;
         List<IMetric> metrics = new ArrayList<>();
         for (int i = 0; i < interfaces; i++) {
-            metrics.add(new Metric(NAME + "_" + i, "123"));
+            metrics.add(new Metric(NAME + "_" + i, "123 " + i));
 
         }
         return metrics;

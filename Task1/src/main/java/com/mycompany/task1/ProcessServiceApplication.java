@@ -9,7 +9,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import java.net.URI;
 import java.net.URISyntaxException;
-import com.mycompany.task1.api.ProcessServiceAPI;
+import com.mycompany.task1.api.Task1API;
 import com.mycompany.task1.commandline.CommandLine;
 import com.mycompany.task1.metric.MetricManager;
 import com.mycompany.task1.resources.MetricResource;
@@ -53,6 +53,8 @@ public class ProcessServiceApplication extends Application<ProcessServiceConfigu
         environment.jersey().register(getDefault());
         environment.jersey().register(getTaskResource());
 
+        
+        
     }
 
     private IDefaultResource getDefault() {
@@ -77,7 +79,7 @@ public class ProcessServiceApplication extends Application<ProcessServiceConfigu
 
         // FIXME --> get from config or discover it
         URI uri = new URI("http://localhost:9082");
-        IAPI api = new ProcessServiceAPI(uri);
+        IAPI api = new Task1API(uri);
         HealthCheckTask checker = new HealthCheckTask(api);
         return checker;
     }
