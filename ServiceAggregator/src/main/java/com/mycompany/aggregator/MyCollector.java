@@ -11,8 +11,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import weka.core.Instances;
+import weka.filters.unsupervised.attribute.Remove;
 
 /**
  *
@@ -22,6 +26,19 @@ public class MyCollector implements Runnable {
 
     private int seconds = 60;
     private boolean stop = false;
+
+    private List<String> values = new ArrayList<>();
+
+    public MyCollector() {
+        try (FileWriter fw = new FileWriter("RAM", true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter out = new PrintWriter(bw)) {
+            out.println("@DATA");
+        } catch (IOException e) {
+            //exception handling left as an exercise for the reader
+        }
+
+    }
 
     @Override
     public void run() {
@@ -39,10 +56,11 @@ public class MyCollector implements Runnable {
                         continue;
                     }
                     System.out.println("received metric " + metric.getName() + " " + metric.getValue());
+                    values.add(metric.getValue());
                     try (FileWriter fw = new FileWriter(metric.getName(), true);
                             BufferedWriter bw = new BufferedWriter(fw);
                             PrintWriter out = new PrintWriter(bw)) {
-                        out.println(metric.getValue());
+                        out.print(metric.getValue() + ",");
                     } catch (IOException e) {
                         //exception handling left as an exercise for the reader
                     }
@@ -60,4 +78,15 @@ public class MyCollector implements Runnable {
             Logger.getLogger(MyCollector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    /*private void calculatingLinearRegression() {
+        Instances reducedInst = new Instances();
+        Remove attributeFilter = new Remove();
+
+        attributeFilter.setInvertSelection(true);
+        attributeFilter.setAttributeIndicesArray(indices);
+        attributeFilter.setInputFormat(reducedInst);
+
+        reducedInst = Filter.useFilter(reducedInst, attributeFilter);
+    }*/
 }
