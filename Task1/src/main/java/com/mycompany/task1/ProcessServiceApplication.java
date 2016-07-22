@@ -10,12 +10,27 @@ import io.dropwizard.setup.Environment;
 import java.net.URI;
 import java.net.URISyntaxException;
 import com.mycompany.task1.api.ProcessServiceAPI;
-import com.mycompany.task1.resources.TaskResource;
+import com.mycompany.task1.commandline.CommandLine;
+import com.mycompany.task1.metric.MetricManager;
+import com.mycompany.task1.resources.MetricResource;
+import java.util.Arrays;
 
 public class ProcessServiceApplication extends Application<ProcessServiceConfiguration> {
 
+    private final int collectEverySeconds;
+    private MetricManager metricManager;
+
     public static void main(final String[] args) throws Exception {
-        new ProcessServiceApplication().run(args);
+
+        int seconds = new CommandLine(args).getInputSeconds();
+
+        String[] argsForService
+                = Arrays.copyOfRange(args, 0, 1);
+        new ProcessServiceApplication(seconds).run(argsForService);
+    }
+
+    public ProcessServiceApplication(int seconds) {
+        this.collectEverySeconds = seconds;
     }
 
     @Override
@@ -25,15 +40,16 @@ public class ProcessServiceApplication extends Application<ProcessServiceConfigu
 
     @Override
     public void initialize(final Bootstrap<ProcessServiceConfiguration> bootstrap) {
-        // TODO: application initialization
+        metricManager = new MetricManager();
+        metricManager.startCollector(collectEverySeconds);
     }
 
     @Override
     public void run(final ProcessServiceConfiguration configuration,
-                    final Environment environment) throws URISyntaxException {
-       
+            final Environment environment) throws URISyntaxException {
+
         environment.healthChecks().register(ProcessServiceConfiguration.SERVICE_NAME,
-                                    getHealthCheck(configuration,environment));
+                getHealthCheck(configuration, environment));
         environment.jersey().register(getDefault());
         environment.jersey().register(getTaskResource());
 
@@ -47,21 +63,18 @@ public class ProcessServiceApplication extends Application<ProcessServiceConfigu
 
         return defaultRes;
     }
-    
-    private TaskResource getTaskResource() {
-        TaskResource resource
-                = new TaskResource(ProcessServiceConfiguration.MAX_TASK_LENGTH);
 
-        return resource;
+    private MetricResource getTaskResource() {
+        MetricResource taskResource
+                = new MetricResource(ProcessServiceConfiguration.MAX_TASK_LENGTH);
+
+        metricManager.addListener(taskResource);
+        return taskResource;
     }
-    
+
     private HealthCheckTask getHealthCheck(final ProcessServiceConfiguration configuration,
             final Environment environment) throws URISyntaxException {
-        
-        /*URI uri = configuration.getServerFactory()
-                .build(environment)
-                .getURI();
-        */
+
         // FIXME --> get from config or discover it
         URI uri = new URI("http://localhost:9082");
         IAPI api = new ProcessServiceAPI(uri);

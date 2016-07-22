@@ -21,7 +21,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>0.9.2</dropwizard.version>
         <mycompany.version>1.0-SNAPSHOT</mycompany.version>
-        <mainClass>com.mycompany.processservice.ProcessServiceApplication</mainClass>
+        <mainClass>com.mycompany.task1.ProcessServiceApplication</mainClass>
     </properties>
 
     <dependencyManagement>

@@ -18,22 +18,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import com.mycompany.task1.api.Task;
+import com.mycompany.task1.api.IMetric;
+import com.mycompany.task1.metric.interfaces.IMetricListener;
 import java.io.IOException;
-import java.util.logging.Level;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by bartoszjedrzejewski on 03/01/2016.
  */
 @Path(ProcessServiceAPI.TASK)
 @Produces(MediaType.APPLICATION_JSON)
-public class TaskResource {
+public class MetricResource implements IMetricListener {
 
     private final int maxLength;
     private final AtomicLong counter;
-    //SLF4J is provided with dropwizard
-    Logger log = LoggerFactory.getLogger(TaskResource.class);
+    private Map<String, IMetric> lastMetrics = new HashMap<>();
 
-    public TaskResource(int maxLength) {
+    //SLF4J is provided with dropwizard
+    Logger log = LoggerFactory.getLogger(MetricResource.class);
+
+    public MetricResource(int maxLength) {
         this.maxLength = maxLength;
         this.counter = new AtomicLong();
     }
@@ -76,12 +81,17 @@ public class TaskResource {
 
         return tasks.toArray(new Task[tasks.size()]);
     }
-    
+
     private Process getTasks() throws IOException {
         try {
             return Runtime.getRuntime().exec("ps -e");
         } catch (IOException ex) {
             return Runtime.getRuntime().exec("tasklist");
         }
+    }
+
+    @Override
+    public void newMetric(IMetric metric) {
+        lastMetrics.put(metric.getName(), metric);
     }
 }
