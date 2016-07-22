@@ -24,7 +24,7 @@ import weka.filters.unsupervised.attribute.Remove;
  */
 public class MyCollector implements Runnable {
 
-    private int seconds = 60;
+    private int seconds = 10;
     private boolean stop = false;
 
     private List<String> values = new ArrayList<>();
