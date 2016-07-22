@@ -6,6 +6,7 @@ import com.mycompany.task1.api.Task1API;
 import com.mycompany.task1.metric.Metric;
 import com.mycompany.task1.metric.RamCollector;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,9 +31,16 @@ public class MyCollector implements Runnable {
     private List<String> values = new ArrayList<>();
 
     public MyCollector() {
+        // FIXME Code temporary
+        File file = new File("RAM.arff");
         try (FileWriter fw = new FileWriter("RAM", true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter out = new PrintWriter(bw)) {
+            out.println("% 1. Title: RAM");
+            out.println("%");
+            out.println("@RELATION myrelation");
+            out.println("@ATTRIBUTE value");
+            out.println("");
             out.println("@DATA");
         } catch (IOException e) {
             //exception handling left as an exercise for the reader
@@ -60,7 +68,7 @@ public class MyCollector implements Runnable {
                     try (FileWriter fw = new FileWriter(metric.getName(), true);
                             BufferedWriter bw = new BufferedWriter(fw);
                             PrintWriter out = new PrintWriter(bw)) {
-                        out.print(metric.getValue() + ",");
+                        out.println(metric.getValue() + ",");
                     } catch (IOException e) {
                         //exception handling left as an exercise for the reader
                     }
