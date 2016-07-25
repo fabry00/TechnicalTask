@@ -10,11 +10,11 @@
     </prerequisites>
 
     <groupId>com.mycompany</groupId>
-    <artifactId>ServiceAggregator</artifactId>
+    <artifactId>LinearRegression</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>ServiceAggregator</name>
+    <name>LinearRegression</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

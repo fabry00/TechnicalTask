@@ -48,14 +48,6 @@ public class NetworkCollector extends BaseCollector {
 
         try {
             String[] networks = sigar.getNetInterfaceList();
-            /*int interfaces = 2;
-            List<Metric> metrics = new ArrayList<>();
-            for (int i = 0; i < interfaces; i++) {
-            Metric metric = new Metric();
-            metric.setName(NAME);
-            metric.setValue("");
-            metrics.add(metric);
-            }*/
 
             List<Metric> metrics = new ArrayList<>();
             for (String inter : networks) {
@@ -78,5 +70,4 @@ public class NetworkCollector extends BaseCollector {
 
         return null;
     }
-
 }

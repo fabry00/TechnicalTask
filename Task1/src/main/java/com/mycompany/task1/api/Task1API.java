@@ -9,9 +9,6 @@ import com.mycompany.task1.metric.Metric;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.logging.Level;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -40,13 +37,6 @@ public class Task1API extends BaseServiceAPI {
             ObjectMapper mapper = new ObjectMapper();
             Metric[] myObject = mapper.readValue(response.getEntity().getContent(),
                     Metric[].class);
-
-            for (Metric metric : myObject) {
-                if (metric == null) {
-                    continue;
-                }
-                System.out.println("-----> " + metric.getValue());
-            }
 
             return myObject;
         } catch (IOException ex) {

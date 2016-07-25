@@ -41,7 +41,7 @@ public class ServiceAggregatorApplication extends Application<ServiceAggregatorC
 
         environment.jersey().register(getDefault());
 
-        new Thread(new MyCollector()).start();
+        new Thread(new LinerarRegression()).start();
 
     }
 

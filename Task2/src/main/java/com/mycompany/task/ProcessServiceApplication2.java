@@ -8,6 +8,7 @@ import com.mycompany.task.api.ProcessServiceAPITask2;
 import com.mycompany.task.commandline.CommandLine;
 import com.mycompany.task.fetch.Fetcher;
 import com.mycompany.task.resources.TaskResource;
+import com.mycompany.task.saver.Saver;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -50,8 +51,9 @@ public class ProcessServiceApplication2 extends Application<ProcessServiceConfig
         environment.jersey().register(getDefault());
         environment.jersey().register(getTaskResource());
 
-         Thread t = new Thread(new Fetcher(collectEverySeconds));
-          t.start();
+        Saver saver = new Saver();
+        Thread t = new Thread(new Fetcher(collectEverySeconds, saver));
+        t.start();
     }
 
     private IDefaultResource getDefault() {
