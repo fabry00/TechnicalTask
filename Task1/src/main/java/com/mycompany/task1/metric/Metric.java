@@ -9,22 +9,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Metric {
 
     private String name;
-    private String value;
+    private Object value;
 
     public Metric() {
 
-    }
-
-    public Metric(String name, String value) {
-        this.name = name;
-        this.value = value;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setValue(String value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 
@@ -34,7 +29,9 @@ public class Metric {
     }
 
     @JsonProperty
-    public String getValue() {
+    public Object getValue() {
         return this.value;
     }
+
+    
 }

@@ -2,8 +2,6 @@ package com.mycompany.task1.metric;
 
 import com.mycompany.task1.metric.interfaces.IMetricCollector;
 import com.mycompany.task1.metric.interfaces.IMetricListener;
-import com.mycompany.task1.resources.MetricResource;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -40,5 +38,7 @@ public class MetricManager {
         colelctors.stream().forEach((collector) -> {
             collector.addListener(listener);
         });
+        
+        
     }
 }

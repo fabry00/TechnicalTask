@@ -9,13 +9,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import com.mycompany.task1.metric.Metric;
 import com.mycompany.task1.metric.interfaces.IMetricListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by bartoszjedrzejewski on 03/01/2016.
@@ -26,7 +26,7 @@ public class MetricResource implements IMetricListener {
 
     private final int maxLength;
     private final AtomicLong counter;
-    private Map<String, Metric> lastMetrics = new HashMap<>();
+    private Map<String, Metric> lastMetrics = new ConcurrentHashMap<>();
 
     //SLF4J is provided with dropwizard
     Logger log = LoggerFactory.getLogger(MetricResource.class);
@@ -42,24 +42,21 @@ public class MetricResource implements IMetricListener {
     // /taks-list?contains=string
     @Path("/" + Task1API.TASK_LIST)
     public Metric[] listTasks() {
-        synchronized (lastMetrics) {
-            log.info("Fetch received");
+        log.info("Fetch received");
 
-            Metric[] metrics = new Metric[lastMetrics.values().size()];
-            int counter = 0;
-            for (Entry<String, Metric> entr : lastMetrics.entrySet()) {
-                System.out.println("Fetched received: " + entr.getValue().getName());
-                metrics[counter] = entr.getValue();
-            }
-
-            return metrics;
+        Metric[] metrics = new Metric[lastMetrics.values().size()];
+        int counter = 0;
+        for (Entry<String, Metric> entr : lastMetrics.entrySet()) {
+            metrics[counter] = entr.getValue();
+            counter++;
         }
+
+        return metrics;
+
     }
 
     @Override
     public void newMetric(Metric metric) {
-        synchronized (lastMetrics) {
-            lastMetrics.put(metric.getName(), metric);
-        }
+        lastMetrics.put(metric.getName(), metric);
     }
 }

@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import com.mycompany.task1.api.Task1API;
 import com.mycompany.task1.commandline.CommandLine;
+import com.mycompany.task1.commandline.MetricPrinter;
 import com.mycompany.task1.metric.MetricManager;
 import com.mycompany.task1.resources.MetricResource;
 import java.util.Arrays;
@@ -48,13 +49,13 @@ public class ProcessServiceApplication extends Application<ProcessServiceConfigu
     public void run(final ProcessServiceConfiguration configuration,
             final Environment environment) throws URISyntaxException {
 
+        System.out.println("java.library.path: " + System.getProperty("java.library.path"));
         environment.healthChecks().register(ProcessServiceConfiguration.SERVICE_NAME,
                 getHealthCheck(configuration, environment));
         environment.jersey().register(getDefault());
         environment.jersey().register(getTaskResource());
 
-        
-        
+        metricManager.addListener(new MetricPrinter());
     }
 
     private IDefaultResource getDefault() {

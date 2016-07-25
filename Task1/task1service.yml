@@ -20,7 +20,7 @@ server:
 #  hardNofileLimit: 1000
   applicationConnectors:
     - type: http
-      port: 9082
+      port: 8082
     #- type: https
     #  port: 8443
     #  keyStorePath: example.keystore
@@ -36,7 +36,7 @@ server:
     #  validatePeers: false
   adminConnectors:
     - type: http
-      port: 10082
+      port: 8083
     #- type: https
     #  port: 8444
     #  keyStorePath: example.keystore
